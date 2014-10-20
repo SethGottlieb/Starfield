@@ -61,7 +61,7 @@ class NormalParticle implements Particle
 	}
 	public void blackhole()
 	{
-		if(get((int)pX + (int)pSize, (int)pY + (int)pSize) == color(7)) 
+		if(get((int)pX + (int)pSize, (int)pY + (int)pSize) == color(5)) 
 		{
 			pR = 0; 
 			pB = 0;
@@ -81,11 +81,11 @@ class OddballParticle implements Particle // Oddball is a blackhole, sucks in st
 	double pX, pY, pSize, pSpeed, pTheta;
 	OddballParticle()
 	{
-		pX = Math.random()*width+50;
-		pY = Math.random()*height+50;
-		pSize = Math.random()*100+20;
-		pSpeed = Math.random()*20 + 5;
-		pTheta = Math.random()*360+1;
+		pX = Math.random()*(width-50) + 50;
+		pY = Math.random()*(height-50) + 50;
+		pSize = Math.random()*100 + 20;
+		pSpeed = Math.random()*15 + 5;
+		pTheta = Math.random()*360 + 1;
 	}
 	public void move()
 	{
@@ -107,7 +107,7 @@ class OddballParticle implements Particle // Oddball is a blackhole, sucks in st
 	}
 	public void show()
 	{
-		fill(7);
+		fill(5);
 		ellipse((float)pX, (float)pY, (float)pSize, (float)pSize);
 	}
 	public void blackhole()
