@@ -8,6 +8,7 @@ void setup()
 		Stars[i] = new NormalParticle();
 	}
 	Stars[1] = new OddballParticle();
+	Stars[2] = new JumboParticle();
 }
 void draw()
 {
@@ -56,7 +57,7 @@ class NormalParticle implements Particle
 	public void show()
 	{
 		noStroke();
-		fill(pR, pB, pG);
+		fill(pR, pB, pG, 175);
 		ellipse((float)pX, (float)pY, (float)pSize, (float)pSize);
 	}
 	public void blackhole()
@@ -83,8 +84,8 @@ class OddballParticle implements Particle // Oddball is a blackhole, sucks in st
 	{
 		pX = Math.random()*(width-50) + 50;
 		pY = Math.random()*(height-50) + 50;
-		pSize = Math.random()*100 + 20;
-		pSpeed = Math.random()*15 + 5;
+		pSize = Math.random()*100 + 30;
+		pSpeed = Math.random()*10 + 5;
 		pTheta = Math.random()*360 + 1;
 	}
 	public void move()
@@ -113,5 +114,27 @@ class OddballParticle implements Particle // Oddball is a blackhole, sucks in st
 	public void blackhole()
 	{
 
+	}
+}
+class JumboParticle extends NormalParticle
+{
+	JumboParticle()
+	{
+		pSize = Math.random()*70 + 30;
+	}
+	public void wrap()
+	{
+		if(pX-pSize/2 > width || pX+pSize/2 < 0 || pY-pSize/2 > height || pY+pSize/2 < 0)
+		{
+			pX = width/2;
+			pY = height/2;
+			pSpeed = Math.random()*5;
+			pTheta = Math.random()*360+1;
+		}
+	}
+	public void show()
+	{
+		fill(pR, pB, pG, 150);
+		ellipse((float)pX, (float)pY, (float)pSize, (float)pSize);
 	}
 }
