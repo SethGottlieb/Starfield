@@ -101,7 +101,7 @@ class OddballParticle implements Particle // Oddball is a blackhole, sucks in st
 		pX = Math.random()*(width-50) + 50;
 		pY = Math.random()*(height-50) + 50;
 		pSize = Math.random()*100 + 30;
-		pSpeed = Math.random()*10 + 5;
+		pSpeed = Math.random()*50 + 5;
 		pTheta = Math.random()*360 + 1;
 	}
 	public void move()
@@ -142,10 +142,7 @@ class JumboParticle extends NormalParticle
 	{
 		if(pX-pSize/2 > width || pX+pSize/2 < 0 || pY-pSize/2 > height || pY+pSize/2 < 0)
 		{
-			pX = width/2;
-			pY = height/2;
-			pSpeed = Math.random()*5;
-			pTheta = Math.random()*360+1;
+			pSize += 10;
 		}
 	}
 	public void show()
